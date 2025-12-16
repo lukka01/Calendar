@@ -16,23 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import JsonResponse  # ← JSON-სთვის
-
-def home(request):
-    """მთავარი გვერდი - ხელმისაწვდომი URL-ების სია"""
-    data = {
-        'message': 'MyCalendar API',
-        'endpoints': {
-            'admin': '/admin/',
-            'calendar': '/calendar/',
-            'user': '/user/'
-        }
-    }
-    return JsonResponse(data)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('calendar/', include('calendar_app.urls')),
     path('user/', include('user_app.urls')),
-    path('', home),  # ← ეს დაამატე!
 ]
+
+#URls bugs fixed
